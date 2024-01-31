@@ -13,7 +13,7 @@ namespace Cupcakes.Models
         public string ImageFilename { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
 
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
 
        /*
