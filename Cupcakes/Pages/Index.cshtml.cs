@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Cupcakes.Data;
+using Cupcakes.Models;
 
 namespace Cupcakes.Pages
 {
@@ -11,10 +13,15 @@ namespace Cupcakes.Pages
         {
             _logger = logger;
         }
+        public List<Cupcake> Cupcakes { get; private set; }
 
         public void OnGet()
         {
+            // Fetch the list of cupcakes from the database
+            Cupcakes = DbContext.GetAllCupcakes();
 
+            // Sorts the cupcakes by name in ascending order
+            Cupcakes.Sort((x, y) => x.Name.CompareTo(y.Name));
         }
     }
 }

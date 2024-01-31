@@ -14,10 +14,10 @@ namespace Cupcakes.Pages
         [BindProperty]
         public Cupcake Cupcake { get; set; } = new();
 
-        /*[BindProperty]
-        [DisplayName("Upload Photo")]
+        [BindProperty]
+        [DisplayName("Upload Image")]
         public IFormFile FileUpload { get; set; }
-        */
+        
         public AddNewCupcakeModel(ILogger<AddNewCupcakeModel> logger, IHostEnvironment environment)
         {
             _logger = logger;
@@ -28,7 +28,7 @@ namespace Cupcakes.Pages
         {
         }
 
-        /*public IActionResult OnPost()
+        public IActionResult OnPost()
         {
             
             // Validate input
@@ -42,8 +42,8 @@ namespace Cupcakes.Pages
 
             string filename = FileUpload.FileName;
 
-            // Update Pet object to include the photo filename
-            Pet.PhotoFileName = filename;
+            // Update Pet object to include the image filename
+            Cupcake.ImageFilename = filename;
 
             // Save the file
             string projectRootPath = _environment.ContentRootPath;
@@ -57,9 +57,9 @@ namespace Cupcakes.Pages
 
             // Save to database
 
-            DbContext.AddNewPet(Pet);
+            DbContext.AddNewCupcake(Cupcake);
 
             return RedirectToPage("Index");
-        }*/
+        }
     }
 }

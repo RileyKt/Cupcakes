@@ -10,14 +10,12 @@ namespace Cupcakes.Models
 
         public string Name { get; set; } = string.Empty;
 
+        [DisplayName("Image")]
         public string ImageFilename { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
 
         public decimal Price { get; set; }
 
-
-       /*
-        [DisplayName("Photo")]
-        public string PhotoFileName { get; set; } = string.Empty;*/
+       
     }
 }
