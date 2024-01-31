@@ -9,12 +9,11 @@ namespace Cupcakes.Pages
 {
     public class DeleteCupcakeModel : PageModel
     {
-        private readonly ILogger<AddNewCupcakeModel> _logger;
+        private readonly ILogger<DeleteCupcakeModel> _logger;
 
         private readonly IWebHostEnvironment _environment;
 
-        [BindProperty(SupportsGet = true)]
-        public int CupcakeId { get; set; }
+        [BindProperty]
         public Cupcake Cupcake { get; set; } = new();
 
         public DeleteCupcakeModel(IWebHostEnvironment environment)
@@ -22,9 +21,9 @@ namespace Cupcakes.Pages
             _environment = environment;
         }
 
-        public void OnGet()
+        public void OnGet(int id)
         {
-            Cupcake = DbContext.GetCupcakeById(CupcakeId);
+            Cupcake = DbContext.GetCupcakeById(id);
         }
 
         public IActionResult OnPost()
@@ -39,7 +38,7 @@ namespace Cupcakes.Pages
             }
 
             // Deletes the cupcake from the database
-            DbContext.RemoveCupcake(CupcakeId);
+            DbContext.RemoveCupcake(Cupcake.CupcakeId);
 
             return RedirectToPage("/Index");
         }

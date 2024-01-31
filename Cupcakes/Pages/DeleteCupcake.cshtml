@@ -10,7 +10,7 @@
     <h2>@Model.Cupcake.Name</h2>
 
     <form method="post">
-        <input type="hidden" asp-for="Cupcake.CupcakeId" />
+        <input type="hidden" name="Cupcake.CupcakeId" value="@Model.Cupcake.CupcakeId" />
         <input type="submit" value="Delete" class="btn btn-danger" />
         <a asp-page="/Index" class="btn btn-secondary">Cancel</a>
     </form>

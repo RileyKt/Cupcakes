@@ -38,8 +38,8 @@ namespace Cupcakes.Data
             SqliteDataReader reader = cmd.ExecuteReader();
 
             // Read through the result (if any)
-            if (reader.Read())
-            {
+            reader.Read();
+            
                 // Read data from the result
                 cupcake.CupcakeId = reader.GetInt32(0);
                 cupcake.Name = reader.GetString(1);
@@ -49,14 +49,8 @@ namespace Cupcakes.Data
                 }
                 cupcake.Description = reader.GetString(3);
                 cupcake.Price = reader.GetDecimal(4);
-            }
-            else
-            {
-                // Handle the case where no data was found
-                // You can throw an exception or return null, depending on your needs
-                // For now, I'll return null
-                cupcake = null;
-            }
+            
+            
 
             // Close the connection
             connection.Close();
