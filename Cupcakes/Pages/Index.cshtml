@@ -3,9 +3,7 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
 <h1 class="display-4">Cupcakes Store</h1>
-<a asp-page="/AddNewCupcake">Add New Cupcake</a>
 
 @foreach (var cupcake in Model.Cupcakes)
 {
@@ -14,6 +12,7 @@
         <h2>@cupcake.Name</h2>
         <p>@cupcake.Description</p>
         <p>Price: @cupcake.Price</p>
-        <a asp-page="/DeleteCupcake" asp-route-id="@cupcake.CupcakeId">Delete</a>
+        <a asp-page="/DeleteCupcake" asp-route-id="@cupcake.CupcakeId">Delete</a> 
+
     </div>
 }

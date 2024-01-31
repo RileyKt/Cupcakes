@@ -42,7 +42,7 @@ namespace Cupcakes.Pages
 
             string filename = FileUpload.FileName;
 
-            // Update Pet object to include the image filename
+            // Update Cupcake object to include the image filename
             Cupcake.ImageFilename = filename;
 
             // Save the file

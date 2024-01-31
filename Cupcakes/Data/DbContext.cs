@@ -21,10 +21,11 @@ namespace Cupcakes.Data
             SqliteConnection connection = new SqliteConnection("Data Source= Data/Cupcakes.db");
 
             // Open the connection
+
             connection.Open();
 
             // Run SQL to get a cupcake
-            string sql = "SELECT CupcakeId, Name, ImageFilename from Cupcake WHERE CupcakeId = @CupcakeId, Description, Price";
+            string sql = "SELECT CupcakeId, Name, ImageFilename, Description, Price FROM Cupcake WHERE CupcakeId = @CupcakeId";
 
             // Create a "command" (sql to execute in database) to execute SQL
             SqliteCommand cmd = connection.CreateCommand();
@@ -37,16 +38,25 @@ namespace Cupcakes.Data
             SqliteDataReader reader = cmd.ExecuteReader();
 
             // Read through the result (if any)
-            reader.Read();
-            cupcake.CupcakeId = reader.GetInt32(0);
-            cupcake.Name = reader.GetString(1);
-            if (!reader.IsDBNull(2))
+            if (reader.Read())
             {
-                cupcake.ImageFilename = reader.GetString(2);
+                // Read data from the result
+                cupcake.CupcakeId = reader.GetInt32(0);
+                cupcake.Name = reader.GetString(1);
+                if (!reader.IsDBNull(2))
+                {
+                    cupcake.ImageFilename = reader.GetString(2);
+                }
+                cupcake.Description = reader.GetString(3);
+                cupcake.Price = reader.GetDecimal(4);
             }
-            cupcake.Description = reader.GetString(3);
-            cupcake.Price = reader.GetDecimal(4);
-
+            else
+            {
+                // Handle the case where no data was found
+                // You can throw an exception or return null, depending on your needs
+                // For now, I'll return null
+                cupcake = null;
+            }
 
             // Close the connection
             connection.Close();
@@ -59,9 +69,9 @@ namespace Cupcakes.Data
         {
             List<Cupcake> cupcakes = new List<Cupcake> ();
 
-            //
+            
             // Query the database to get the cupcakes
-            //
+            
 
             // Create connection to database
             SqliteConnection connection = new SqliteConnection("Data Source= Data/Cupcakes.db");
@@ -138,7 +148,7 @@ namespace Cupcakes.Data
         public static void RemoveCupcake(int cupcakeId)
         {
             // Create connection to database
-            SqliteConnection connection = new SqliteConnection("Data Source= Data/database.db");
+            SqliteConnection connection = new SqliteConnection("Data Source=Data/Cupcakes.db");
 
             // Open the connection
             connection.Open();

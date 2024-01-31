@@ -6,6 +6,7 @@ using Cupcakes.Models;
 namespace Cupcakes.Pages
 {
     public class IndexModel : PageModel
+
     {
         private readonly ILogger<IndexModel> _logger;
 
