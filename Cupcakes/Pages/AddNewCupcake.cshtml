@@ -1,0 +1,37 @@
+﻿@page
+@model Cupcakes.Pages.AddNewCupcakeModel
+@{
+}
+
+<h1>Add New Cupcake</h1>
+<div class="w-50">
+
+    <!-- Add multipart/form-data to upload file(s) -->
+
+    <form method="post" enctype="multipart/form-data">
+
+        <div class="mb-3">
+            <label asp-for="FileUpload" class="form-label"></label><br>
+            <input asp-for="FileUpload" class="form-control" />
+            <span asp-validation-for="FileUpload" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Pet.Name" class="form-label"></label><br>
+            <input asp-for="Pet.Name" class="form-control" />
+            <span asp-validation-for="Pet.Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Pet.Age"></label><br>
+            <input asp-for="Pet.Age" class="form-control" />
+            <span asp-validation-for="Pet.Age" class="text-danger"></span>
+        </div>
+
+        <p>
+            <input type="submit" value="Submit" class="btn btn-primary" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+        </p>
+    </form>
+
+</div>
