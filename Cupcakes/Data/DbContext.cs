@@ -70,7 +70,7 @@ namespace Cupcakes.Data
             connection.Open();
 
             // Run SQL to get all the cupcakes
-            string sql = "SELECT CupcakeId, Name, ImageFilename from Cupcake WHERE CupcakeId = @CupcakeId, Description, Price";
+            string sql = "SELECT CupcakeId, Name, ImageFilename, Description, Price FROM Cupcake";
 
             // Create a "command" (sql to execute in database) to execute SQL
             SqliteCommand cmd = connection.CreateCommand ();
@@ -115,8 +115,8 @@ namespace Cupcakes.Data
 
             // Run SQL to insert cupcake into cupcake table
             // Use command parameters to add the user's input to the SQL
-            string sql = "INSERT INTO Cupcake(Name, ImageFilename, Description, Price) VALUES (@Name, @ImageFilename, @Description, Price)";
-            
+            string sql = "INSERT INTO Cupcake(Name, ImageFilename, Description, Price) VALUES (@Name, @ImageFilename, @Description, @Price)";
+
             SqliteCommand cmd = connection.CreateCommand();
             
             cmd.CommandText = sql;

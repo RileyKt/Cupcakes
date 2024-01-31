@@ -1,33 +1,46 @@
 ﻿@page
 @model Cupcakes.Pages.AddNewCupcakeModel
 @{
+    //Layout = "_Layout"; 
 }
 
 <h1>Add New Cupcake</h1>
 <div class="w-50">
 
     <!-- Add multipart/form-data to upload file(s) -->
-
     <form method="post" enctype="multipart/form-data">
-
+        <!-- File Upload Field -->
         <div class="mb-3">
-            <label asp-for="FileUpload" class="form-label"></label><br>
-            <input asp-for="FileUpload" class="form-control" />
+            <label asp-for="FileUpload" class="form-label">Upload Image</label><br>
+            <input asp-for="FileUpload" class="form-control" type="file" />
             <span asp-validation-for="FileUpload" class="text-danger"></span>
         </div>
 
+        <!-- Name Field -->
         <div class="mb-3">
-            <label asp-for="Cupcake.Name" class="form-label"></label><br>
+            <label asp-for="Cupcake.Name" class="form-label">Name</label><br>
             <input asp-for="Cupcake.Name" class="form-control" />
             <span asp-validation-for="Cupcake.Name" class="text-danger"></span>
         </div>
 
-        
+        <!-- Description Field -->
+        <div class="mb-3">
+            <label asp-for="Cupcake.Description" class="form-label">Description</label><br>
+            <textarea asp-for="Cupcake.Description" class="form-control"></textarea>
+            <span asp-validation-for="Cupcake.Description" class="text-danger"></span>
+        </div>
 
+        <!-- Price Field -->
+        <div class="mb-3">
+            <label asp-for="Cupcake.Price" class="form-label">Price</label><br>
+            <input asp-for="Cupcake.Price" class="form-control" type="number" step="0.01" />
+            <span asp-validation-for="Cupcake.Price" class="text-danger"></span>
+        </div>
+
+        <!-- Submit and Cancel Buttons -->
         <p>
-            <input type="submit" value="Submit" class="btn btn-primary" />&nbsp;&nbsp;&nbsp;&nbsp;
-            <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+            <input type="submit" value="Add" class="btn btn-primary" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <a asp-page="/Index" class="btn btn-secondary">Cancel</a>
         </p>
     </form>
-
 </div>
