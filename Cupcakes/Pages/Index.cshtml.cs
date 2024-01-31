@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Cupcakes.Data;
 using Cupcakes.Models;
 
+
 namespace Cupcakes.Pages
 {
     public class IndexModel : PageModel
