@@ -8,11 +8,11 @@
 @foreach (var cupcake in Model.Cupcakes)
 {
     <div>
-        <img src="~/uploads/@cupcake.ImageFilename" alt="Cupcake Image" style="width: 300px; height: 300px;"/>
+        <img src="~/uploads/@cupcake.ImageFilename" alt="Cupcake Image" style="width: 300px; height: 300px;" />
         <h2>@cupcake.Name</h2>
         <p>@cupcake.Description</p>
         <p>Price: @cupcake.Price</p>
-        <a asp-page="/DeleteCupcake" asp-route-id="@cupcake.CupcakeId">Delete</a> 
+        <a asp-page="/DeleteCupcake" asp-route-id="@cupcake.CupcakeId">Delete</a>
 
     </div>
 }
